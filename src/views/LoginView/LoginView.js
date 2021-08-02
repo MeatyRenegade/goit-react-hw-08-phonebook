@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styles from './LoginView.module.css';
+import { logIn } from '../../redux/auth/auth-operations';
 
 class LoginView extends Component {
   state = {
@@ -14,44 +16,52 @@ class LoginView extends Component {
   handelSubmit = e => {
     e.preventDefault();
 
-    this.setState({ name: '', email: '', password: '' });
+    this.props.onLogin(this.state);
+
+    this.setState({ email: '', password: '' });
   };
 
   render() {
     const { email, password } = this.state;
 
     return (
-      <div>
-        <h1>Login page</h1>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <h1>LOGIN</h1>
 
-        <form
-          onSubmit={this.handelSubmit}
-          className={styles.form}
-          autoComplete="off"
-        >
-          <label className={styles.label}>
-            e-mail
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handelChange}
-            />
-          </label>
-          <label className={styles.label}>
-            password
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handelChange}
-            />
-          </label>
-          <button>sign-up</button>
-        </form>
+          <form
+            onSubmit={this.handelSubmit}
+            className={styles.form}
+            autoComplete="off"
+          >
+            <label className={styles.label}>
+              Username
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={this.handelChange}
+              />
+            </label>
+            <label className={styles.label}>
+              Password
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={this.handelChange}
+              />
+            </label>
+            <button>SUBMIT</button>
+          </form>
+        </div>
       </div>
     );
   }
 }
 
-export default LoginView;
+const mapDispatchToProps = {
+  onLogin: logIn,
+};
+
+export default connect(null, mapDispatchToProps)(LoginView);
