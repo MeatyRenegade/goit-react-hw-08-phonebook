@@ -1,14 +1,19 @@
-import React from 'react';
-import styles from './AppBar.module.css';
+import { connect } from 'react-redux';
 import Navigation from '../Navigation';
 import UserMenu from '../UserMenu';
 import AuthNav from '../AuthNav';
+import { getIsAuthenticated } from '../../redux/auth/auth-selectors';
+import styles from './AppBar.module.css';
 
 const AppBar = ({ isAuthenticated }) => (
   <header className={styles.header}>
     <Navigation />
-    {true ? <UserMenu /> : <AuthNav />}
+    {isAuthenticated ? <UserMenu /> : <AuthNav />}
   </header>
 );
 
-export default AppBar;
+const mapStateToProps = state => ({
+  isAuthenticated: getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps)(AppBar);

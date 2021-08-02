@@ -6,6 +6,12 @@
   color: #2a363b;
 }
 
+.link:focus,
+.link:hover {
+  color: #e84a5f;
+  /* text-decoration: underline; */
+}
+
 .activeLink {
   color: #e84a5f;
 }

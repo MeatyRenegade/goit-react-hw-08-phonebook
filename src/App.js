@@ -1,18 +1,14 @@
-import React, { Component, lazy, Suspense } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import { connect } from 'react-redux';
-// import ContactForm from './components/ContactForm';
-// import ContactList from './components/ContactList';
-import Container from './components/Container';
 
+import Container from './components/Container';
 import HomeView from './views/HomeView/HomeView';
 import RegisterView from './views/RegisterView/RegisterView';
 import LoginView from './views/LoginView/LoginView';
-// import Filter from './components/Filter';
 import ContactsView from './views/ContactsView/ContactsView';
 import AppBar from './components/AppBar';
 import Loader from './components/Loader';
-// import { getLoading } from './redux/contacts/contacts-selectors';
 
 class App extends Component {
   // componentDidMount() {
@@ -24,9 +20,6 @@ class App extends Component {
       <Container>
         <AppBar />
 
-        {/* <ContactForm /> */}
-        {/* <Filter /> */}
-        {/* <ContactList /> */}
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path="/" component={HomeView} />
@@ -41,7 +34,7 @@ class App extends Component {
 }
 
 // const mapDispatchToProps = {
-//   onGetCurrentUser: authOperations.getCurrentUser,
+//   onGetCurrentUser: getCurrentUser,
 // };
 
 export default App;
