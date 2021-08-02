@@ -9,26 +9,59 @@ import {
   logoutRequest,
   logoutSuccess,
   logoutError,
-  getCurrentUserRequest,
-  getCurrentUserSuccess,
-  getCurrentUserError,
-} from './contacts-actions';
+  // getCurrentUserRequest,
+  // getCurrentUserSuccess,
+  // getCurrentUserError,
+} from './auth-actions';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const token = {
+export const token = {
   set(token) {
-    axios.defaults.header.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.header.common.Authorization = '';
+    axios.defaults.headers.common.Authorization = '';
   },
 };
 
-export const register = credentials => dispatch => {};
+export const register = credentials => async dispatch => {
+  dispatch(registerRequest());
 
-export const logIn = credentials => dispatch => {};
+  try {
+    const response = await axios.post('/users/signup', credentials);
 
-export const logOut = () => dispatch => {};
+    token.set(response.data.token);
+    dispatch(registerSuccess(response.data));
+  } catch (error) {
+    dispatch(registerError(error.message));
+  }
+};
 
-export const getCurentUser = () => (dispatch, getState) => {};
+export const logIn = credentials => async dispatch => {
+  dispatch(loginRequest());
+
+  try {
+    const response = await axios.post('/users/login', credentials);
+
+    token.set(response.data.token);
+    dispatch(loginSuccess(response.data));
+  } catch (error) {
+    dispatch(loginError(error.message));
+  }
+};
+
+export const logOut = () => async dispatch => {
+  dispatch(logoutRequest());
+
+  try {
+    await axios.post('/users/logout');
+
+    token.unset();
+    dispatch(logoutSuccess());
+  } catch (error) {
+    dispatch(logoutError(error.message));
+  }
+};
+
+export const getCurrentUser = () => (dispatch, getState) => {};
