@@ -1,31 +1,47 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import ContactForm from './components/ContactForm';
-import ContactList from './components/ContactList';
+import React, { Component, lazy, Suspense } from 'react';
+import { Switch, Route } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import ContactForm from './components/ContactForm';
+// import ContactList from './components/ContactList';
 import Container from './components/Container';
-import Filter from './components/Filter';
-import styles from './App.module.css';
+
+import HomeView from './views/HomeView/HomeView';
+import RegisterView from './views/RegisterView/RegisterView';
+import LoginView from './views/LoginView/LoginView';
+// import Filter from './components/Filter';
+import ContactsView from './views/ContactsView/ContactsView';
+import AppBar from './components/AppBar';
 import Loader from './components/Loader';
-import { getLoading } from './redux/contacts/contacts-selectors';
+// import { getLoading } from './redux/contacts/contacts-selectors';
 
 class App extends Component {
+  // componentDidMount() {
+  //   this.props.onGetCurrentUser();
+  // }
+
   render() {
-    const { isLoadingContacts } = this.props;
     return (
       <Container>
-        <h1 className={styles.main_header}>Phonebook</h1>
-        <ContactForm />
-        <h2 className={styles.header}>- Contacts -</h2>
-        <Filter />
-        <ContactList />
-        {isLoadingContacts && <Loader />}
+        <AppBar />
+
+        {/* <ContactForm /> */}
+        {/* <Filter /> */}
+        {/* <ContactList /> */}
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <Route exact path="/" component={HomeView} />
+            <Route path="/register" component={RegisterView} />
+            <Route path="/login" component={LoginView} />
+            <Route path="/contacts" component={ContactsView} />
+          </Switch>
+        </Suspense>
       </Container>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  isLoadingContacts: getLoading(state),
-});
+// const mapDispatchToProps = {
+//   onGetCurrentUser: authOperations.getCurrentUser,
+// };
 
-export default connect(mapStateToProps)(App);
+export default App;

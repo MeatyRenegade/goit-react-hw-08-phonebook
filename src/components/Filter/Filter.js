@@ -5,13 +5,16 @@ import { getFilter } from '../../redux/contacts/contacts-selectors';
 import styles from './Filter.module.css';
 
 const Filter = ({ value, onChange }) => (
-  <input
-    className={styles.input}
-    type="text"
-    placeholder="Search"
-    value={value}
-    onChange={onChange}
-  ></input>
+  <>
+    <h2 className={styles.header}>- Contacts -</h2>
+    <input
+      className={styles.input}
+      type="text"
+      placeholder="Search"
+      value={value}
+      onChange={onChange}
+    ></input>
+  </>
 );
 
 Filter.propTypes = {

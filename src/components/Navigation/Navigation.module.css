@@ -1,0 +1,24 @@
+.link {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  font-size: 25px;
+  font-weight: 600;
+  color: #2a363b;
+  text-decoration: none;
+}
+
+.activeLink {
+  color: #db7093;
+}
+
+.link:focus,
+.link:hover {
+  color: #db7093;
+  text-decoration: underline;
+}
+
+.activeLink:focus,
+.activeLink:hover {
+  text-decoration: underline;
+}
