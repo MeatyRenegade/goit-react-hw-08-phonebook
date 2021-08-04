@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styles from './RegisterView.module.css';
 import { register } from '../../redux/auth/auth-operations';
+import styles from './RegisterView.module.css';
 
 class RegisterView extends Component {
   state = {
@@ -27,41 +27,47 @@ class RegisterView extends Component {
 
     return (
       <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <h1>SIGN-UP</h1>
-          <form
-            onSubmit={this.handelSubmit}
-            className={styles.form}
-            autoComplete="off"
-          >
-            <label className={styles.label}>
-              Name
+        <div className={styles.register_box}>
+          <h2>SIGN-UP</h2>
+
+          <form onSubmit={this.handelSubmit} autoComplete="off">
+            <div className={styles.user_box}>
               <input
-                type="name"
+                type="text"
                 name="name"
+                required
                 value={name}
                 onChange={this.handelChange}
               />
-            </label>
-            <label className={styles.label}>
-              E-mail
+              <label>Name</label>
+            </div>
+            <div className={styles.user_box}>
               <input
-                type="email"
+                type="text"
                 name="email"
+                required
                 value={email}
                 onChange={this.handelChange}
               />
-            </label>
-            <label className={styles.label}>
-              Password
+              <label>E-mail</label>
+            </div>
+            <div className={styles.user_box}>
               <input
                 type="password"
                 name="password"
+                required
                 value={password}
                 onChange={this.handelChange}
               />
-            </label>
-            <button>SUBMIT</button>
+              <label>Password</label>
+            </div>
+            <button type="submit">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Submit
+            </button>
           </form>
         </div>
       </div>
