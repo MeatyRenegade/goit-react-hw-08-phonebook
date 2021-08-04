@@ -44,30 +44,26 @@ class ContactForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <>
-        <h1 className={styles.main_header}>Phonebook</h1>
-        <form className={styles.form} onSubmit={this.handleSubmit}>
-          <label>
-            Contact:{' '}
+      <div className={styles.contact_box}>
+        <h1>Phonebook</h1>
+
+        <form onSubmit={this.handleSubmit}>
+          <div className={styles.user_box}>
             <input
-              className={styles.input}
               type="text"
               name="name"
-              placeholder="Name and Surname"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
               required
               value={name}
               onChange={this.handleChange}
             />
-          </label>
-          <label>
-            Number:{' '}
+            <label>Contact</label>
+          </div>
+          <div className={styles.user_box}>
             <input
-              className={styles.input}
               type="tel"
               name="number"
-              placeholder="+371-123-123-123"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Номер телефона должен состоять из цифр и может содержать пробелы, тире, круглые скобки и может 
              с +"
@@ -75,12 +71,18 @@ class ContactForm extends Component {
               value={number}
               onChange={this.handleChange}
             />
-          </label>
-          <button className={styles.button} type="submit">
+            <label>Number</label>
+          </div>
+
+          <button type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
             Add contact
           </button>
         </form>
-      </>
+      </div>
     );
   }
 }

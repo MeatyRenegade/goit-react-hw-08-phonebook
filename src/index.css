@@ -9,13 +9,10 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
   padding: 0;
-}
-
-p {
-  margin-top: 0;
 }
 
 img {
@@ -51,6 +48,7 @@ code {
 }
 
 #root {
+  min-height: calc(100vh - 50px);
   background: radial-gradient(
     circle,
     rgb(155, 206, 207) 0%,

@@ -9,7 +9,6 @@
 .link:focus,
 .link:hover {
   color: #e84a5f;
-  /* text-decoration: underline; */
 }
 
 .activeLink {

@@ -11,8 +11,8 @@ const ContactList = ({ contacts, onDeleteContact }) => (
         <p className={styles.name}>{name}</p>
         <p className={styles.number}>{number}</p>
         <button
-          className={styles.button}
           type="button"
+          className={styles.button}
           onClick={() => onDeleteContact(id)}
         >
           &#x2715;

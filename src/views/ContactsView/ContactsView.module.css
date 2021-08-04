@@ -13,11 +13,12 @@
   justify-content: center;
   width: 1000px;
   height: 1100px;
+  padding: 20px;
   border-radius: 20px;
   background: radial-gradient(
     circle,
-    rgb(76, 102, 102) 0%,
-    rgb(40, 49, 61) 100%
+    rgb(201, 214, 214) 0%,
+    rgb(183, 188, 194) 100%
   );
   box-shadow: 0 0 10px 0 #051937;
 }
