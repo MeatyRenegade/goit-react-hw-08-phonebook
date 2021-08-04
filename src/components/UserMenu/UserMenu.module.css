@@ -13,10 +13,26 @@
 }
 
 .button {
-  padding: 5px;
-  height: 40px;
-  border-radius: 20px;
-  font-size: 18px;
+  display: inline-block;
+  padding: 10px 12px;
+  color: black;
   font-weight: 500;
-  background-color: #db7093;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.5s;
+  background-color: transparent;
+  /* background: #00696e; */
+  border: 1px solid #050505;
+  border-radius: 10px;
+  outline: none;
+}
+
+.button:hover {
+  background: #00696e;
+  color: #fff;
+  border: 1px solid #00696e;
+  box-shadow: 0 0 2px #03e9f4, 0 0 10px #03e9f4, 0 0 30px #03e9f4,
+    0 0 70px #03e9f4;
 }

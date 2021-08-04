@@ -15,7 +15,7 @@
 }
 
 .item:hover {
-  box-shadow: 0 0 15px 0 #c7c7c7;
+  box-shadow: 0 0 15px 0 #03e9f4;
 }
 
 .name {
@@ -35,7 +35,7 @@
   border-radius: 20px;
   background-image: linear-gradient(-180deg, #da1b1b 0%, #911111 100%);
   outline: none;
-  box-shadow: 0px 0px 5px 0 #f8f8f8;
+  box-shadow: 0px 0px 5px 0 #03e9f4;
   cursor: pointer;
 }
 
