@@ -9,8 +9,6 @@ import { fetchContacts } from '../../redux/contacts/contacts-operations';
 import styles from './ContactsView.module.css';
 
 class ContactsView extends Component {
-  state = {};
-
   componentDidMount() {
     this.props.fetchContacts();
   }
